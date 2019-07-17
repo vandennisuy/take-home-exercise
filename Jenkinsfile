@@ -2,6 +2,7 @@ pipeline {
     environment {
         registry = "continuouslee/person-api"
         registryCredential = "dockerhub"
+        dockerImage = ""
     }
     agent any
     tools { 
@@ -31,7 +32,7 @@ pipeline {
         stage ('Docker Build') {
             steps {
                 script {
-                    docker.build (registry, "--build-arg JARFILE=person-0.0.1-SNAPSHOT.jar .")
+                    dockerImage = docker.build (registry, "--build-arg JARFILE=person-0.0.1-SNAPSHOT.jar .")
                 }
             }
         }
