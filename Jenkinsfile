@@ -29,7 +29,6 @@ pipeline {
             }
         }
         stage ('Docker Build') {
-            agent { dockerfile true }
             steps {
                 script {
                     docker.build (registry, "--build-arg JARFILE=person-0.0.1-SNAPSHOT.jar .")
