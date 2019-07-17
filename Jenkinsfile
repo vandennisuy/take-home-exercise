@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        registry = "continuouslee/person-api"
+        registryCredential = ‘dockerhub’
+    }
     agent any
     tools { 
         maven 'mvn361' 
@@ -14,13 +18,21 @@ pipeline {
             }
         }
 
-        stage ('Build') {
+        stage ('Code Build') {
             steps {
                 sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
             post {
                 success {
                     junit 'target/surefire-reports/**/*.xml' 
+                }
+            }
+        }
+        stage ('Docker Build') {
+            agent { dockerfile true }
+            steps {
+                script {
+                    docker.build (registry, "--build-arg JARFILE=person-0.0.1-SNAPSHOT.jar .")
                 }
             }
         }
