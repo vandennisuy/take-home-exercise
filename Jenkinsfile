@@ -35,5 +35,14 @@ pipeline {
                 }
             }
         }
+        stage ('Docker Publish') {
+            steps {
+                script {
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
     }
 }
