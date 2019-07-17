@@ -1,7 +1,7 @@
 pipeline {
     environment {
         registry = "continuouslee/person-api"
-        registryCredential = ‘dockerhub’
+        registryCredential = "dockerhub"
     }
     agent any
     tools { 
