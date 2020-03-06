@@ -1,7 +1,7 @@
 pipeline {
     environment {
         registry = "vandennisuy/person-api"
-        registryCredential = "dockerhub"
+        registryCredential = "docker_hub_login"
         dockerImage = ""
     }
     agent any
