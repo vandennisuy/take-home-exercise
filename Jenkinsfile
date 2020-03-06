@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "vandennisuy/person-api"
+        registry = "dm3nace/person-api"
         registryCredential = "docker_hub_login"
         dockerImage = ""
     }
