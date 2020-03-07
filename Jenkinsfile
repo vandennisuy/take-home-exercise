@@ -33,6 +33,7 @@ pipeline {
             steps {
                 script {
                     dockerImage = docker.build (registry + ":${BUILD_NUMBER}", "--build-arg JARFILE=person-0.0.1-SNAPSHOT.jar .")
+                    dockerImageLatest = docker.build (registry + ":latest", "--build-arg JARFILE=person-0.0.1-SNAPSHOT.jar .")
                 }
             }
         }
@@ -41,6 +42,7 @@ pipeline {
                 script {
                     docker.withRegistry('', registryCredential) {
                         dockerImage.push()
+                        dockerImageLatest.push()
                     }
                 }
             }
