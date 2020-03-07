@@ -17,6 +17,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: development
   name: person-api-deployment
   labels:
     app: person-api
