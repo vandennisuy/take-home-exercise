@@ -31,6 +31,6 @@ spec:
     spec:
       containers:
       - name: person-api
-        image: dm3nace/person-api:latest
+        image: dm3nace/person-api:${trigger['tag']}
         ports:
         - containerPort: 8080
