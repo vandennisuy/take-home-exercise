@@ -1,7 +1,6 @@
 kind: Service
 apiVersion: v1
 metadata:
-  namespace: development
   name: person-api-service
 spec:
   type: NodePort
@@ -17,7 +16,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: development
   name: person-api-deployment
   labels:
     app: person-api
