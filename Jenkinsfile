@@ -26,6 +26,7 @@ pipeline {
             post {
                 success {
                     junit 'target/surefire-reports/**/*.xml' 
+                    archiveArtifacts 'target/person-0.0.1-SNAPSHOT.jar'
                 }
             }
         }
